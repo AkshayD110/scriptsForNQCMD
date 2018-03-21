@@ -1,13 +1,21 @@
 #!/bin/bash
 #set -xv
-#This is the main script which will call all the other scripts
-
-export baseFolder=/u01/app/oracle/tools/home/oracle/rdcTesting/outputFiles/multiThreadRuns/default_latency
+export rowCount=500
 export filename=$1
 export threadCount=$2
-export nqcmdInputfile=rdc_query5000RowReturn.txt
+export nqcmdInputfile=rdc_query${rowCount}RowReturn.txt
 
-./cpudetails.sh $baseFolder $filename &
-./saroutput.sh $baseFolder $filename &
-./taillog.sh $baseFolder $filename &
+export baseFolder=/u01/app/oracle/tools/home/oracle/rdcTesting/outputFiles/akshOMCS_withoutVPNaas/multiThreadRuns/${rowCount}rows_${threadCount}user
+
+if [ ! -e "$baseFolder" ]; then
+  mkdir -p $baseFolder
+  mkdir -p $baseFolder/topdetails
+  mkdir -p $baseFolder/sarouts
+  mkdir -p $baseFolder/nqcmdouts
+  mkdir -p $baseFolder/logfiles
+fi
+
+#./cpudetails.sh $baseFolder $filename &
+#./saroutput.sh $baseFolder $filename &
+#./taillog.sh $baseFolder $filename &
 ./startnqcmd.sh $baseFolder $filename $threadCount $nqcmdInputfile &
