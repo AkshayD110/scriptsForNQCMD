@@ -5,7 +5,7 @@ export filename=$1
 export threadCount=$2
 export nqcmdInputfile=rdc_query${rowCount}RowReturn.txt
 
-export baseFolder=/u01/app/oracle/tools/home/oracle/rdcTesting/outputFiles/akshOMCS_withoutVPNaas/multiThreadRuns/${rowCount}rows_${threadCount}user
+export baseFolder=/u01/app/oracle/tools/home/oracle/rdcTesting/outputFileofTest/aksh_siteF_highRDC/multiThreadRuns/${rowCount}rows_${threadCount}user
 
 if [ ! -e "$baseFolder" ]; then
   mkdir -p $baseFolder
@@ -15,7 +15,7 @@ if [ ! -e "$baseFolder" ]; then
   mkdir -p $baseFolder/logfiles
 fi
 
-#./cpudetails.sh $baseFolder $filename &
-#./saroutput.sh $baseFolder $filename &
+./cpudetails.sh $baseFolder $filename &
+./saroutput.sh $baseFolder $filename &
 #./taillog.sh $baseFolder $filename &
 ./startnqcmd.sh $baseFolder $filename $threadCount $nqcmdInputfile &
