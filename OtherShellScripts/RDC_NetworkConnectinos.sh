@@ -1,4 +1,5 @@
 #!/bin/bash
+# monitors the network connections from RDC--OAC and RDC--DB every 2 seconds, and will run for 30mins
 
 export filename=$1
 i=0
