@@ -28,6 +28,7 @@ i=`expr $i + 1`
 
 done
 
+#if you disable the child-id collector, remember to remove it from below as well
 paste -d "\n" tempTimeStamp.txt tempretrivedsites.txt tempSiteID.txt tempTimeTaken.txt tempSpaceBreak.txt> Results.txt
 
 echo "The results are found in Results.txt file"
