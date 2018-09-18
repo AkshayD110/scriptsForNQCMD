@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 #!/bin/bash
+#parses the log file for Purge topology and give average Throughput and time taken for each bolt
 export filepath=$1
 
 echo "*purge-appdata-bolt metrics*" >> Resultsfile.txt
