@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 #!/bin/bash
+#This script get the count of total objects in the ceph object store
+#change the iterator in for loop below as per ceph numbering.
 
 for i in {1..11}
 do
