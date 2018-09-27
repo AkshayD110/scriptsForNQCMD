@@ -2,6 +2,12 @@
 #parses the log file for ingestion topology and give average Throughput and time taken for each bolt
 export filepath=$1
 
+if [ "$#" -ne 1 ]; then
+    echo "Illegal number of parameters"
+    echo "pass the worker.log.stat file as input for the script"
+    echo "example : ./ingestionParser.sh <filePath>"
+fi
+
 echo "*DataPartitioningBolt metrics*" >> ReultsFile_ingestion.txt
 echo "Avrg time for DataPartitioningBolt: " `grep -i "DataPartitioningBolt" $1 | awk -F ',' '{print $4}' | awk -F '"' '{ sum += $4; n++ } END { if (n > 0) print sum / n; }'` >> ReultsFile_ingestion.txt
 echo "Avrg throughput for DataPartitioningBolt :" ` grep -i "DataPartitioningBolt" $1 | awk -F ',' '{print $NF}' | awk -F ',' '{print $1}' | awk -F '"' '{print $4}' | awk -F '/' '{ sum += $1; n++ } END { if (n > 0) print sum / n; }'` >> ReultsFile_ingestion.txt
