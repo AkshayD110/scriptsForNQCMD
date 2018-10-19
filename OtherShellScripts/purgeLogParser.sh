@@ -5,6 +5,8 @@
 export filepath=$1
 
 if [ $# -ne 1 ] ; then
+        echo "Illegal number of parameters"
+        echo "pass the worker.log.stat file as input for the script"
         echo "Usage : ./purgeanalyzer.sh worker.log.stats "
         exit
 fi
