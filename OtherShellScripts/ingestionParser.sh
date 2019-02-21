@@ -2,6 +2,8 @@
 #parses the log file for ingestion topology and give average Throughput and time taken for each bolt
 export filepath=$1
 
+
+
 if [ "$#" -ne 1 ]; then
     echo "Illegal number of parameters"
     echo "pass the worker.log.stat file as input for the script"
